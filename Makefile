@@ -13,9 +13,20 @@ OBJS = $(patsubst %.cpp, %.o, $(SRCS))
 PATH_OBJS = $(addprefix $(DIR_OBJS)/, $(OBJS))
 DIR_SRCS_OBJS = $(addprefix $(DIR_OBJS)/, $(DIRS))
 
+GLFW_LIB = glfw/lib/libglfw3.a
+GLFW_HEADERS_DIR = glfw/include
+
+GLAD_LIB = glad/glad.a
+GLAD_HEADERS_DIR = glad/include
+
+GLEW_lIB = glew/2.2.0_1/lib/libGLEW.a
+GLEW_HEADERS_DIR = glew/2.2.0_1/include
+GLM_HEADERS_DIR = glm/glm
+
 CC = clang++
 
-FLAGS = -g -O3 -std=c++17
+FLAGS = -g -O3 -std=c++17 -Wall -Werror -Wextra
+GLFLAGS =
 
 RM = rm -rf
 
@@ -26,7 +37,7 @@ all: $(NAME)
 
 $(NAME): write_logo create_dirs $(PATH_OBJS)
 	@echo "$(GREEN)\nObjects was created $(RESET)"
-	@$(CC) $(FLAGS) -I $(DIR_INCLUDES) $(PATH_OBJS) -o $@
+	@$(CC) $(FLAGS) $(GLFLAGS) -I $(DIR_INCLUDES) -I $(GLFW_HEADERS_DIR) -I $(GLAD_HEADERS_DIR) -I $(GLEW_HEADERS_DIR) -I $(GLM_HEADERS_DIR) -I $(GLM_HEADERS_DIR) $(GLFW_LIB) $(GLEW_lIB) $(PATH_OBJS) -o $@
 	@echo "$(GREEN)Simply the best hard multi-d ray-tracing mother lover by peace dukes was compiled $(RESET)"
 
 write_logo:
@@ -71,7 +82,7 @@ create_dirs:
 	@mkdir -p $(DIR_OBJS) $(DIR_SRCS_OBJS)
 
 $(DIR_OBJS)/%.o: $(DIR_SRCS)/%.cpp $(PATH_HEADERS) Makefile
-	@$(CC) $(FLAGS) -I $(DIR_INCLUDES) -c $< -o $@
+	@$(CC) $(FLAGS) $(GLFLAGS) -I $(DIR_INCLUDES) -I $(GLFW_HEADERS_DIR) -I $(GLAD_HEADERS_DIR) -I $(GLEW_HEADERS_DIR) -I $(GLM_HEADERS_DIR) -c $< -o $@
 	@echo "$(GREEN).$(RESET)\c"
 
 clean:
