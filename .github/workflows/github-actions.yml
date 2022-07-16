@@ -1,9 +1,14 @@
 name: RT
-on: push
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
 jobs:
   run_application:
     runs-on: macos-10.15
     steps:
       - uses: actions/checkout@v3
       - run: make
-      - run: ./RT
