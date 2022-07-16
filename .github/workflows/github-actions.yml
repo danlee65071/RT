@@ -2,7 +2,7 @@ name: RT
 on: push
 jobs:
   run_application:
-    runs-on: macos-12
+    runs-on: macos-10.15
     steps:
       - uses: actions/checkout@v3
       - run: make
