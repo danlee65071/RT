@@ -23,13 +23,13 @@ OBJS = $(patsubst %.cpp, %.o, $(SRCS))
 PATH_OBJS = $(addprefix $(DIR_OBJS)/, $(OBJS))
 DIR_SRCS_OBJS = $(addprefix $(DIR_OBJS)/, $(DIRS))
 
-GLFW_LIB = glfw/lib/libglfw3.a
+GLFW_LIB = glfw/lib/libglfw3.dylib
 GLFW_HEADERS_DIR = glfw/include
 
 GLAD_LIB = glad/glad.a
 GLAD_HEADERS_DIR = glad/include
 
-GLEW_lIB = glew/2.2.0_1/lib-arm64/libGLEW.a
+GLEW_lIB = glew/2.2.0_1/lib/libGLEW.dylib
 GLEW_HEADERS_DIR = glew/2.2.0_1/include
 GLM_HEADERS_DIR = glm/glm
 
