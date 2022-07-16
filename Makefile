@@ -3,6 +3,8 @@ NAME = RT
 SRCS = RT.cpp
 DIR_SRCS = srcs
 
+FAKE_VAR = 
+
 SCENE_SRCS = Scene.cpp
 SCENE_INCLUDES = Scene.hpp
 SCENE_SRCS_DIR = Scene
