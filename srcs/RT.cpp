@@ -1,10 +1,19 @@
 #include "RT.hpp"
 
-int main()
+int main(int argc, char** argv)
 {
-    Scene scene;
+    std::string mode;
+    if (argc == 2)
+        mode = argv[1];
+    else
+        mode = "";
+    
+    Scene scene(mode);
 
     scene.InitOpenGL();
-    scene.Run();
+    if (mode == "test")
+        scene.TriangleTestRun();
+    else
+        scene.Run();
     return 0;
 }

@@ -14,6 +14,8 @@
 class Scene
 {
     private:
+        std::string     _mode;
+
         GLFWwindow*     _window;
         int             _viewWidth;
         int             _viewHeight;
@@ -24,7 +26,7 @@ class Scene
         Scene(const Scene& other);
         Scene& operator=(const Scene& other);
     public:
-        Scene() = default;
+        Scene(const std::string& mode);
         ~Scene() = default;
 
         void InitOpenGL();
@@ -33,4 +35,6 @@ class Scene
         void _ErrorExit(const std::string& str);
 
         void _TriangleTest();
+    public:
+        void TriangleTestRun();
 };

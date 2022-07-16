@@ -5,7 +5,7 @@ DIR_SRCS = srcs
 
 UNAME := $(shell uname)
 
-SCENE_SRCS = Scene.cpp
+SCENE_SRCS = Scene.cpp Test.cpp
 SCENE_INCLUDES = Scene.hpp
 SCENE_SRCS_DIR = Scene
 SCENE_SRCS_PATH = $(addprefix $(SCENE_SRCS_DIR)/, $(SCENE_SRCS))
