@@ -2,6 +2,9 @@
 
 int main()
 {
-    std::cout << "Hello worls!\n";
+    Scene scene;
+
+    scene.InitOpenGL();
+    scene.Run();
     return 0;
 }
