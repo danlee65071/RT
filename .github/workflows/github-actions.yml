@@ -11,12 +11,4 @@ jobs:
     runs-on: macos-10.15
     steps:
       - uses: actions/checkout@v3
-      - run: make VERBOSE=1
-
-  run_application_linux:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - run: sudo apt-get install libglfw3-dev libgl1-mesa-dev libglu1-mesa-dev
       - run: make
-      
