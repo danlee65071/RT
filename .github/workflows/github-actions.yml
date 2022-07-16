@@ -5,6 +5,7 @@ jobs:
     runs-on: macos-12
     steps:
       - run: pwd
+      - run: cd ..
       - run: ls
       - run: make
       - run: ./RT
