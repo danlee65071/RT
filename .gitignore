@@ -1,3 +1,4 @@
 RT
 .DS_Store
-objs
+objs/
+.vscode

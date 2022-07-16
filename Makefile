@@ -2,6 +2,14 @@ NAME = RT
 
 SRCS = RT.cpp
 DIR_SRCS = srcs
+
+SCENE_SRCS = Scene.cpp
+SCENE_INCLUDES = Scene.hpp
+SCENE_SRCS_DIR = Scene
+SCENE_SRCS_PATH = $(addprefix $(SCENE_SRCS_DIR)/, $(SCENE_SRCS))
+SRCS += $(SCENE_SRCS_PATH)
+DIRS = $(SCENE_SRCS_DIR)
+
 SRCS_PATH = $(addprefix $(DIR_SRCS)/, $(SRCS))
 
 INCLUDES = RT.hpp
@@ -26,7 +34,7 @@ GLM_HEADERS_DIR = glm/glm
 CC = clang++
 
 FLAGS = -g -O3 -std=c++17 -Wall -Werror -Wextra
-GLFLAGS =
+GLFLAGS = -framework OpenGL -framework Cocoa -framework IOKit -framework Carbon -framework CoreVideo
 
 RM = rm -rf
 
@@ -81,8 +89,8 @@ write_logo:
 create_dirs:
 	@mkdir -p $(DIR_OBJS) $(DIR_SRCS_OBJS)
 
-$(DIR_OBJS)/%.o: $(DIR_SRCS)/%.cpp $(PATH_HEADERS) Makefile
-	@$(CC) $(FLAGS) $(GLFLAGS) -I $(DIR_INCLUDES) -I $(GLFW_HEADERS_DIR) -I $(GLAD_HEADERS_DIR) -I $(GLEW_HEADERS_DIR) -I $(GLM_HEADERS_DIR) -c $< -o $@
+$(DIR_OBJS)/%.o: $(DIR_SRCS)/%.cpp $(INCLUDES_PATH) Makefile
+	@$(CC) $(FLAGS) -I $(DIR_INCLUDES) -I $(GLFW_HEADERS_DIR) -I $(GLAD_HEADERS_DIR) -I $(GLEW_HEADERS_DIR) -I $(GLM_HEADERS_DIR) -c $< -o $@
 	@echo "$(GREEN).$(RESET)\c"
 
 clean:
