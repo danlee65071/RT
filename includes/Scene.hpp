@@ -1,6 +1,8 @@
 #pragma once
 
-#include <iostream>
+# include <iostream>
+# include <fstream>
+# include <sstream>
 
 #define GLEW_STATIC
 # include <GL/glew.h>
@@ -16,6 +18,9 @@ class Scene
         int             _viewWidth;
         int             _viewHeight;
 
+        GLuint          shaderProgram;
+        GLuint          VAO;
+
         Scene(const Scene& other);
         Scene& operator=(const Scene& other);
     public:
@@ -26,4 +31,6 @@ class Scene
         void Run();
     private:
         void _ErrorExit(const std::string& str);
+
+        void _TriangleTest();
 };
