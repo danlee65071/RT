@@ -3,6 +3,8 @@ NAME = RT
 SRCS = RT.cpp
 DIR_SRCS = srcs
 
+UNAME := $(shell uname)
+
 SCENE_SRCS = Scene.cpp
 SCENE_INCLUDES = Scene.hpp
 SCENE_SRCS_DIR = Scene
@@ -34,8 +36,9 @@ GLM_HEADERS_DIR = glm/glm
 CC = clang++
 
 FLAGS = -g -O3 -std=c++17 -Wall -Werror -Wextra
-GLFLAGS = -framework OpenGL -framework Cocoa -framework IOKit -framework Carbon -framework CoreVideo
-
+ifeq ($(UNAME),Darwin)  # Mac OS X
+	GLFLAGS = -framework OpenGL -framework Cocoa -framework IOKit -framework Carbon -framework CoreVideo
+endif
 RM = rm -rf
 
 GREEN = \033[0;32m
