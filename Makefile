@@ -40,7 +40,7 @@ ifeq ($(UNAME),Darwin)  # Mac OS X
 	GLFLAGS = -framework OpenGL -framework Cocoa -framework IOKit -framework Carbon -framework CoreVideo
 endif
 ifeq ($(UNAME), Linux) # Linux
-	GLFLAGS = -Lglfw/lib-universal -lglfw3 -Lglew/2.2.0_1/lib -lGLEW
+	GLFLAGS = -Lglfw/lib-universal -lglfw3 -Lglew/2.2.0_1/lib -lGLEW -lXext -lX11 -lbsd -lm
 endif
 
 RM = rm -rf
