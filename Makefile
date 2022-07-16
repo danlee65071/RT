@@ -23,7 +23,7 @@ OBJS = $(patsubst %.cpp, %.o, $(SRCS))
 PATH_OBJS = $(addprefix $(DIR_OBJS)/, $(OBJS))
 DIR_SRCS_OBJS = $(addprefix $(DIR_OBJS)/, $(DIRS))
 
-GLFW_LIB = glfw/lib/libglfw3.dylib
+GLFW_LIB = glfw/lib-universal/libglfw3.dylib
 GLFW_HEADERS_DIR = glfw/include
 
 GLAD_LIB = glad/glad.a
@@ -40,7 +40,7 @@ ifeq ($(UNAME),Darwin)  # Mac OS X
 	GLFLAGS = -framework OpenGL -framework Cocoa -framework IOKit -framework Carbon -framework CoreVideo
 endif
 ifeq ($(UNAME), Linux) # Linux
-	GLFLAGS = -Lglfw/lib -lglfw3 -Lglew/2.2.0_1/lib -lGLEW
+	GLFLAGS = -Lglfw/lib-universal -lglfw3 -Lglew/2.2.0_1/lib -lGLEW
 endif
 
 RM = rm -rf
