@@ -7,9 +7,8 @@ int main(int argc, char** argv)
         mode = argv[1];
     else
         mode = "";
-    
-    Scene scene(mode);
 
+    Scene& scene = Scene::getInstance();
     scene.InitOpenGL();
     if (mode == "test")
         scene.TriangleTestRun();

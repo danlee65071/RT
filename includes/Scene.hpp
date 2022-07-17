@@ -12,30 +12,46 @@
 #define WIDTH 800
 #define HEIGHT 600
 
+class Scene;
+
+class SceneDestroyer
+{
+    private:
+        Scene* p_instance;
+    public:
+        ~SceneDestroyer();
+        void initialize(Scene* p);
+};
+
 class Scene
 {
     private:
-        std::string     _mode;
+        static Scene*           p_instance;
+        static SceneDestroyer   _destroyer;
+        GLFWwindow*             _window;
+        int                     _viewWidth;
+        int                     _viewHeight;
 
-        GLFWwindow*     _window;
-        int             _viewWidth;
-        int             _viewHeight;
+        GLuint                  shaderProgram;
+        GLuint                  VAO;
 
-        GLuint          shaderProgram;
-        GLuint          VAO;
+    protected:
+        Scene() {};
+        Scene(const Scene&) = delete;
+        Scene& operator=(Scene&) = delete;
+        ~Scene(){}
+        friend class SceneDestroyer;
 
-        Scene(const Scene& other);
-        Scene& operator=(const Scene& other);
     public:
-        Scene(const std::string& mode);
-        ~Scene() = default;
-
+        static Scene& getInstance();
         void InitOpenGL();
         void Run();
+
     private:
         void _ErrorExit(const std::string& str);
 
         void _TriangleTest();
+
     public:
         void TriangleTestRun();
 };
