@@ -3,6 +3,7 @@
 # include <iostream>
 # include <fstream>
 # include <sstream>
+# include <cmath>
 
 #define GLEW_STATIC
 # include <GL/glew.h>
