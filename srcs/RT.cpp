@@ -2,8 +2,7 @@
 
 int main()
 {
-    Scene scene;
-
+    Scene& scene = Scene::getInstance();
     scene.InitOpenGL();
     scene.Run();
     return 0;
