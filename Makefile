@@ -37,8 +37,7 @@ CC = clang++
 
 FLAGS = -g -O3 -std=c++17 -Wall -Werror -Wextra
 ifeq ($(UNAME),Darwin)  # Mac OS X
-	GLFLAGS = -Lglfw/lib -lglfw3 -Lglew/2.2.0_1/lib -lGLEW -framework OpenGL -framework Cocoa
-	-framework IOKit -framework Carbon -framework CoreVideo
+	GLFLAGS = -Lglfw/lib -lglfw3 -Lglew/2.2.0_1/lib -lGLEW -framework OpenGL -framework Cocoa -framework IOKit -framework Carbon -framework CoreVideo
 endif
 ifeq ($(UNAME),Linux) # Linux
 	GLFLAGS = -lglfw -lGLEW -lGLU -lGL -lXrandr -lXxf86vm -lX11 -lrt -ldl
