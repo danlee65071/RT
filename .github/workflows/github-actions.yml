@@ -14,7 +14,7 @@ jobs:
       - run: make
   
   run_application_ubuntu:
-    runs_on: ubuntu-latest
+    runs_on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v3
       - run: sudo apt-get install libglfw3 && sudo apt-get install libglfw3-dev
