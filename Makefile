@@ -37,10 +37,11 @@ CC = clang++
 
 FLAGS = -g -O3 -std=c++17 -Wall -Werror -Wextra
 ifeq ($(UNAME),Darwin)  # Mac OS X
-	GLFLAGS = -framework OpenGL -framework Cocoa -framework IOKit -framework Carbon -framework CoreVideo
+	GLFLAGS = -Lglfw/lib -lglfw3 -Lglew/2.2.0_1/lib -lGLEW -framework OpenGL -framework Cocoa
+	-framework IOKit -framework Carbon -framework CoreVideo
 endif
 ifeq ($(UNAME),Linux) # Linux
-	GLFLAGS = -Lglfw/lib -lglfw3 -Lglew/2.2.0_1/lib -lGLEW -lXext -lX11
+	GLFLAGS = -lglfw -lGLEW -lGLU -lGL -lXrandr -lXxf86vm -lX11 -lrt -ldl
 endif
 
 RM = rm -rf
@@ -52,7 +53,7 @@ all: $(NAME)
 
 $(NAME): write_logo create_dirs $(PATH_OBJS)
 	@echo "$(GREEN)\nObjects was created $(RESET)"
-	@$(CC) $(FLAGS) $(GLFLAGS) -I $(DIR_INCLUDES) -I $(GLFW_HEADERS_DIR) -I $(GLAD_HEADERS_DIR) -I $(GLEW_HEADERS_DIR) -I $(GLM_HEADERS_DIR) -I $(GLM_HEADERS_DIR) $(GLFW_LIB) $(GLEW_lIB) $(PATH_OBJS) -o $@
+	@$(CC) $(FLAGS) $(PATH_OBJS) $(GLFLAGS) -I $(DIR_INCLUDES) -I $(GLFW_HEADERS_DIR) -I $(GLAD_HEADERS_DIR) -I $(GLEW_HEADERS_DIR) -I $(GLM_HEADERS_DIR) -I $(GLM_HEADERS_DIR) -o $@
 	@echo "$(GREEN)Simply the best hard multi-d ray-tracing mother lover by peace dukes was compiled $(RESET)"
 
 write_logo:

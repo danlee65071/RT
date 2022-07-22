@@ -12,4 +12,12 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - run: make
-      
+  
+  run_application:
+    runs_on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - run: sudo apt-get install libglfw3 && sudo apt-get install libglfw3-dev
+      - run: sudo apt-get install -y libglew-dev
+      - run: sudo apt-get install -y libxxf86vm-dev
+      - run: make
