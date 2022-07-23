@@ -51,6 +51,7 @@ class Scene
         void _ErrorExit(const std::string& str);
 
         void _TriangleTest();
+        void _SphereTest();
 
     public:
         void TriangleTestRun();
