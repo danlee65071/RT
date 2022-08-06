@@ -51,6 +51,7 @@ class Scene
         void InitOpenGL();
         void LoadShader(const std::string& ShaderFile);
         void Run();
+        static GLuint BuildShader(const std::string& ShaderCode, GLenum ShaderType);
 
     private:
         void _ErrorExit(const std::string& str);
@@ -58,6 +59,7 @@ class Scene
 
         void _TriangleTest();
         void _SphereTest();
+
     public:
         void TriangleTestRun();
 };

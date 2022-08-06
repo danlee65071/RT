@@ -73,3 +73,22 @@ void Scene::_setShaderCode()
 {
     this->_shaderCode = this->_shader.GetShaderCode();
 }
+
+GLuint Scene::BuildShader(const std::string& ShaderCode, GLenum ShaderType)
+{
+    GLuint          shader;
+    GLint          status;
+    GLchar          info[512];
+    const GLchar*   CShaderCode = ShaderCode.c_str();
+
+    shader = glCreateShader(ShaderType);
+    glShaderSource(shader, 1, &CShaderCode, NULL);
+    glCompileShader(shader);
+    glGetShaderiv(shader, GL_COMPILE_STATUS, &status);
+    if (!status)
+    {
+        glGetShaderInfoLog(shader, 512, NULL, info);
+        std::cout << "ERROR::SHADER::VERTEX::COMPILATION_FAILED\n" << info << std::endl;
+    }
+    return shader;
+}
