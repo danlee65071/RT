@@ -1,6 +1,7 @@
 #include "Shader.hpp"
 
-Shader::Shader(const std::string& FilePath): _filePath(FilePath) {}
+Shader::Shader(const std::string& FilePath): _filePath(FilePath)
+{}
 
 void Shader::SetFilePath(const std::string& FilePath)
 {
@@ -12,13 +13,17 @@ std::string Shader::GetFilePath() const
     return this->_filePath;
 }
 
-void Shader::_readShader()
+void Shader::ReadShader()
 {
-    std::ifstream       ShaderFile;
+    std::ifstream       ShaderFile(this->_filePath, std::ios::in);
     std::stringstream   ss;
 
-    ShaderFile.open(this->_filePath);
     ss << ShaderFile.rdbuf();
-    ShaderFile.close();
     this->_shaderCode = ss.str();
+    ShaderFile.close();
+}
+
+std::string Shader::GetShaderCode() const
+{
+    return this->_shaderCode;
 }

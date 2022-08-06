@@ -9,6 +9,8 @@
 # include <GL/glew.h>
 # include <GLFW/glfw3.h>
 
+# include "Shader.hpp"
+
 #define WIDTH 800
 #define HEIGHT 600
 
@@ -31,6 +33,8 @@ class Scene
         GLFWwindow*             _window;
         int                     _viewWidth;
         int                     _viewHeight;
+        Shader                  _shader;
+        std::string             _shaderCode;
 
         GLuint                  shaderProgram;
         GLuint                  VAO;
@@ -45,14 +49,15 @@ class Scene
     public:
         static Scene& getInstance();
         void InitOpenGL();
+        void LoadShader(const std::string& ShaderFile);
         void Run();
 
     private:
         void _ErrorExit(const std::string& str);
+        void _setShaderCode();
 
         void _TriangleTest();
         void _SphereTest();
-
     public:
         void TriangleTestRun();
 };

@@ -23,6 +23,7 @@ class Shader
         void SetFilePath(const std::string& FilePath);
         [[nodiscard]] std::string GetFilePath() const;
 
-    private:
-        void _readShader();
+        [[nodiscard]] std::string GetShaderCode() const;
+
+        void ReadShader();
 };

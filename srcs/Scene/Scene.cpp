@@ -7,6 +7,7 @@ SceneDestroyer::~SceneDestroyer()
 {
     delete p_instance;
 }
+
 void SceneDestroyer::initialize(Scene* p)
 {
     p_instance = p;
@@ -60,4 +61,15 @@ void Scene::_ErrorExit(const std::string& str)
     std::cout << str << std::endl;
     glfwTerminate();
     exit(1);
+}
+
+void Scene::LoadShader(const std::string& ShaderFile)
+{
+    this->_shader.SetFilePath(ShaderFile);
+    this->_shader.ReadShader();
+}
+
+void Scene::_setShaderCode()
+{
+    this->_shaderCode = this->_shader.GetShaderCode();
 }
